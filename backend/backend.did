@@ -1,0 +1,11 @@
+type BlogEntry = 
+ record {
+   content: text;
+   id: nat;
+   timestamp: int;
+   title: text;
+ };
+service : {
+  addEntry: (text, text) -> (nat);
+  getEntries: () -> (vec BlogEntry) query;
+}
