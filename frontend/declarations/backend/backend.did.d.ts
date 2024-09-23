@@ -10,6 +10,7 @@ export interface BlogEntry {
 }
 export interface _SERVICE {
   'addEntry' : ActorMethod<[string, string], bigint>,
+  'deleteEntry' : ActorMethod<[bigint], boolean>,
   'getEntries' : ActorMethod<[], Array<BlogEntry>>,
 }
 export declare const idlFactory: IDL.InterfaceFactory;

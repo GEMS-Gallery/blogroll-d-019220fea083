@@ -16,8 +16,20 @@ async function loadEntries() {
             <p>${entry.content}</p>
             <small>Posted on: ${new Date(Number(entry.timestamp) / 1000000).toLocaleString()}</small>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <button class="delete-btn" data-id="${entry.id}">Delete</button>
         `;
         entriesContainer.appendChild(entryElement);
+    });
+
+    // Add event listeners for delete buttons
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', async (e) => {
+            const id = Number(e.target.getAttribute('data-id'));
+            const deleted = await backend.deleteEntry(id);
+            if (deleted) {
+                await loadEntries();
+            }
+        });
     });
 }
 

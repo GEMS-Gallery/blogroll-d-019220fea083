@@ -1,3 +1,4 @@
+import Bool "mo:base/Bool";
 import Func "mo:base/Func";
 import Int "mo:base/Int";
 import Nat "mo:base/Nat";
@@ -37,5 +38,14 @@ actor {
   // Function to get all blog entries
   public query func getEntries() : async [BlogEntry] {
     entries
+  };
+
+  // Function to delete a blog entry
+  public func deleteEntry(id: Nat) : async Bool {
+    let oldLength = entries.size();
+    entries := Array.filter(entries, func (entry: BlogEntry) : Bool {
+      entry.id != id
+    });
+    entries.size() < oldLength
   };
 }

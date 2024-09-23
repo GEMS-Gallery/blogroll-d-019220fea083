@@ -75,3 +75,12 @@ iframe {
     display: block;
     margin: 20px auto 0;
 }
+
+.delete-btn {
+    background-color: #f44336;
+    margin-top: 10px;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}

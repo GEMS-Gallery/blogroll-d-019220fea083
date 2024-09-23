@@ -7,5 +7,6 @@ type BlogEntry =
  };
 service : {
   addEntry: (text, text) -> (nat);
+  deleteEntry: (nat) -> (bool);
   getEntries: () -> (vec BlogEntry) query;
 }
